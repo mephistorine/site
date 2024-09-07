@@ -7,8 +7,9 @@ import {
 import {isDev} from "@builder.io/qwik/build"
 import {RouterHead} from "./components/router-head/router-head"
 
-import "./global.css"
 import "./global_normalize.css"
+import "./global_colors.css"
+import "./global.css"
 
 export default component$(() => {
   /**
@@ -29,6 +30,10 @@ export default component$(() => {
           />
         )}
         <RouterHead />
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/tailwindcss-colors-css-variables"
+        />
       </head>
       <body lang="ru">
         <RouterOutlet />

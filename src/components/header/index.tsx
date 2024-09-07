@@ -11,6 +11,10 @@ export const Header = component$(() => {
         <h3 class="title">
           <Link href="/">Булатов Сэм</Link>
         </h3>
+
+        <div>
+          <Link href="/new">Новая статья</Link>
+        </div>
       </div>
 
       <nav class="navigation">
