@@ -7,6 +7,7 @@ import {
   zod$
 } from "@builder.io/qwik-city"
 import {fromPromise} from "@sweet-monads/either"
+import {ArticlePage} from "~/components"
 import {Article, ArticleStatus, getPocketbaseClientOrThrow} from "~/shared"
 
 export const useDraftArticle = routeLoader$(async (request) => {
@@ -51,19 +52,23 @@ export default component$(() => {
     </>
   }
 
-  return <>
-    <h1>{article.value.title}</h1>
+  return <main>
+    <div class="container">
+      <h1>{article.value.title}</h1>
 
-    <button onClick$={() => {
-      articlePublishAction
-        .submit({id: article.value.id})
-        .then(({value}) => {
-          if (!value.slug) {
-            return
-          }
+      <ArticlePage body={article.value.body} />
 
-          navigate(`/articles/${value.slug}`)
-        })
-    }}>{articlePublishAction.isRunning ? "Публикуется..." : "Опубликовать"}</button>
-  </>
+      <button onClick$={() => {
+        articlePublishAction
+          .submit({id: article.value.id})
+          .then(({value}) => {
+            if (!value.slug) {
+              return
+            }
+
+            navigate(`/articles/${value.slug}`)
+          })
+      }}>{articlePublishAction.isRunning ? "Публикуется..." : "Опубликовать"}</button>
+    </div>
+  </main>
 })

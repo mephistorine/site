@@ -33,11 +33,11 @@ export function getPocketbaseClientOrThrow(
 
 export async function createPocketbaseClient(request: RequestEventBase) {
   const pocketbaseServerUrl = fromNullable(
-    request.env.get("VITE_POCKETBASE_URL"),
-  )
+    request.env.get("POCKETBASE_URL"),
+  ).or(fromNullable(request.env.get("VITE_POCKETBASE_URL")))
 
   if (pocketbaseServerUrl.isNone()) {
-    throw new Error("VITE_POCKETBASE_URL not defined")
+    throw new Error("POCKETBASE_URL not defined")
   }
 
   const pocketbaseClient = new PocketbaseClient(pocketbaseServerUrl.unwrap())

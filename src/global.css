@@ -8,7 +8,7 @@
 
 :root {
   --max-container-width: 120ch;
-  --body-bg-color: light-dark(var(--color-zinc-100), var(--color-zinc-800));
+  --body-bg-color: light-dark(var(--color-zinc-50), var(--color-zinc-800));
   --text-color: light-dark(var(--color-zinc-800), var(--color-zinc-200));
   --font-size: 16px;
 
